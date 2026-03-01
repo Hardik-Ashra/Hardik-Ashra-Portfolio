@@ -8,7 +8,7 @@ export const personalInfo = {
   github: "https://github.com/Hardik-Ashra",
   githubUsername: "Hardik-Ashra",
   linkedin: "https://linkedin.com/in/hardik-ashra",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/Hardik Ashra — Full-Stack Developer.pdf",
 };
 
 export const taglines = [
