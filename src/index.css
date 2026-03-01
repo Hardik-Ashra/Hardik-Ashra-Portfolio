@@ -1,0 +1,941 @@
+@import "tailwindcss";
+
+/* ===================================================================
+   DESIGN TOKENS
+   Architecture: data-theme="neobrutalism|skeuomorphism|glassmorphism
+                              |liquidglass|minimalism"
+                 data-mode="light|dark"
+   =================================================================== */
+
+/* ==================== NEOBRUTALISM ==================== */
+:root,
+[data-theme="neobrutalism"][data-mode="light"] {
+  --bg-primary: #fffdf7;
+  --bg-secondary: #fff8e7;
+  --bg-card: #ffffff;
+  --bg-nav: rgba(255, 253, 247, 0.9);
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-muted: #7a7a9a;
+  --accent-primary: #ff6b35;
+  --accent-secondary: #7b2ff7;
+  --accent-tertiary: #00c49a;
+  --accent-quaternary: #ffd23f;
+  --border-color: #1a1a2e;
+  --border-width: 3px;
+  --shadow-color: #1a1a2e;
+  --shadow-offset: 4px;
+  --radius: 12px;
+  --card-shadow: 4px 4px 0px var(--shadow-color);
+  --card-shadow-hover: 6px 6px 0px var(--shadow-color);
+  --card-border: var(--border-width) solid var(--border-color);
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --transition-speed: 0.3s;
+  --glow-color: rgba(123, 47, 247, 0.3);
+  --card-hover-transform: translate(-2px, -2px);
+  --card-bg-gradient: none;
+  --btn-primary-bg: var(--accent-primary);
+  --btn-primary-border: var(--card-border);
+  --btn-secondary-bg: transparent;
+  --backdrop-blur: 0px;
+
+  /* Project accent palette — earthy, warm, pairs with neobrutalism orange */
+  --project-accent-0: #e05c2a; /* burnt orange      */
+  --project-accent-1: #6d28d9; /* deep violet       */
+  --project-accent-2: #047857; /* forest green      */
+  --project-accent-3: #b45309; /* amber brown       */
+  --project-accent-4: #be185d; /* rose              */
+  --project-accent-5: #0369a1; /* ocean blue        */
+}
+
+[data-theme="neobrutalism"][data-mode="dark"] {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --bg-card: #1e1e36;
+  --bg-nav: rgba(15, 15, 26, 0.92);
+  --text-primary: #f0f0f5;
+  --text-secondary: #b0b0cc;
+  --text-muted: #6a6a8a;
+  --accent-primary: #ff7a47;
+  --accent-secondary: #a07af5;
+  --accent-tertiary: #2dd4b4;
+  --accent-quaternary: #ffd23f;
+  --border-color: #f0f0f5;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --glow-color: rgba(160, 122, 245, 0.4);
+
+  --project-accent-0: #fb8c5e; /* soft orange       */
+  --project-accent-1: #b08cf7; /* soft violet       */
+  --project-accent-2: #34d399; /* mint green        */
+  --project-accent-3: #fbbf24; /* warm amber        */
+  --project-accent-4: #f472b6; /* soft pink         */
+  --project-accent-5: #38bdf8; /* sky blue          */
+}
+
+/* ==================== SKEUOMORPHISM ==================== */
+[data-theme="skeuomorphism"][data-mode="light"] {
+  --bg-primary: #ede8e0;
+  --bg-secondary: #e2dcd3;
+  --bg-card: #f5f0ea;
+  --bg-nav: rgba(237, 232, 224, 0.92);
+  --text-primary: #2c2418;
+  --text-secondary: #5c5040;
+  --text-muted: #8a7e6e;
+  --accent-primary: #2563eb;
+  --accent-secondary: #16a34a;
+  --accent-tertiary: #dc2626;
+  --accent-quaternary: #d97706;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-width: 1px;
+  --shadow-color: rgba(0, 0, 0, 0.12);
+  --shadow-offset: 0px;
+  --radius: 16px;
+  --card-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --card-shadow-hover:
+    0 4px 12px rgba(0, 0, 0, 0.1), 0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --card-border: 1px solid rgba(0, 0, 0, 0.06);
+  --glow-color: rgba(37, 99, 235, 0.15);
+  --card-hover-transform: translateY(-3px);
+  --card-bg-gradient: linear-gradient(145deg, #f7f2ec, #ede7df);
+  --backdrop-blur: 0px;
+
+  /* Muted, warm professional tones */
+  --project-accent-0: #1d4ed8; /* royal blue        */
+  --project-accent-1: #15803d; /* deep green        */
+  --project-accent-2: #c2410c; /* terracotta        */
+  --project-accent-3: #a16207; /* golden            */
+  --project-accent-4: #7e22ce; /* plum              */
+  --project-accent-5: #0e7490; /* teal              */
+}
+
+[data-theme="skeuomorphism"][data-mode="dark"] {
+  --bg-primary: #1c1914;
+  --bg-secondary: #2a2520;
+  --bg-card: #332e28;
+  --bg-nav: rgba(28, 25, 20, 0.92);
+  --text-primary: #ede5d8;
+  --text-secondary: #b8ad9e;
+  --text-muted: #7a7060;
+  --accent-primary: #60a5fa;
+  --accent-secondary: #4ade80;
+  --accent-tertiary: #fca5a5;
+  --accent-quaternary: #fcd34d;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-width: 1px;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --radius: 16px;
+  --card-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --card-shadow-hover:
+    0 4px 12px rgba(0, 0, 0, 0.25), 0 12px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --card-border: 1px solid rgba(255, 255, 255, 0.06);
+  --glow-color: rgba(96, 165, 250, 0.25);
+  --card-hover-transform: translateY(-3px);
+  --card-bg-gradient: linear-gradient(145deg, #3a352f, #2e2923);
+  --backdrop-blur: 0px;
+
+  --project-accent-0: #93c5fd; /* soft blue         */
+  --project-accent-1: #86efac; /* soft green        */
+  --project-accent-2: #fca5a5; /* soft red          */
+  --project-accent-3: #fcd34d; /* soft gold         */
+  --project-accent-4: #d8b4fe; /* soft purple       */
+  --project-accent-5: #67e8f9; /* soft cyan         */
+}
+
+/* ==================== GLASSMORPHISM ==================== */
+/*
+   Signature look: frosted panels floating above a vivid gradient mesh.
+   The PAGE background does the heavy lifting — blobs of color behind
+   blurred cards make the frosted glass effect visible and beautiful.
+*/
+[data-theme="glassmorphism"][data-mode="light"] {
+  /* Mesh gradient bg — indigo/violet/cyan blobs on white base */
+  --bg-primary: #f0f2ff;
+  --bg-secondary: rgba(255, 255, 255, 0.6);
+  --bg-card: rgba(255, 255, 255, 0.45);
+  --bg-nav: rgba(255, 255, 255, 0.55);
+  --text-primary: #1e1b4b;
+  --text-secondary: #3730a3;
+  --text-muted: #6366f1;
+  --accent-primary: #4f46e5;
+  --accent-secondary: #7c3aed;
+  --accent-tertiary: #0891b2;
+  --accent-quaternary: #db2777;
+  --border-color: rgba(255, 255, 255, 0.7);
+  --border-width: 1px;
+  --shadow-color: rgba(79, 70, 229, 0.12);
+  --shadow-offset: 0px;
+  --radius: 20px;
+  --card-shadow:
+    0 4px 16px rgba(79, 70, 229, 0.08), 0 16px 48px rgba(79, 70, 229, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --card-shadow-hover:
+    0 8px 32px rgba(79, 70, 229, 0.14), 0 24px 64px rgba(79, 70, 229, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.7);
+  --glow-color: rgba(99, 102, 241, 0.35);
+  --card-hover-transform: translateY(-5px);
+  /* Frosted glass card shimmer — top highlight like real glass */
+  --card-bg-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.25) 100%
+  );
+  --backdrop-blur: 20px;
+
+  --project-accent-0: #4338ca;
+  --project-accent-1: #7c3aed;
+  --project-accent-2: #0891b2;
+  --project-accent-3: #d97706;
+  --project-accent-4: #db2777;
+  --project-accent-5: #059669;
+}
+
+[data-theme="glassmorphism"][data-mode="dark"] {
+  /* Deep space gradient bg — dark navy with violet/indigo glow blobs */
+  --bg-primary: #07071a;
+  --bg-secondary: rgba(255, 255, 255, 0.04);
+  --bg-card: rgba(255, 255, 255, 0.07);
+  --bg-nav: rgba(10, 10, 30, 0.75);
+  --text-primary: #e8eaff;
+  --text-secondary: #a5b0e8;
+  --text-muted: #5560a0;
+  --accent-primary: #818cf8;
+  --accent-secondary: #a78bfa;
+  --accent-tertiary: #22d3ee;
+  --accent-quaternary: #f472b6;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-width: 1px;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --radius: 20px;
+  --card-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --card-shadow-hover:
+    0 8px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(129, 140, 248, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glow-color: rgba(129, 140, 248, 0.5);
+  --card-hover-transform: translateY(-5px);
+  --card-bg-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  --backdrop-blur: 24px;
+
+  --project-accent-0: #a5b4fc;
+  --project-accent-1: #c4b5fd;
+  --project-accent-2: #67e8f9;
+  --project-accent-3: #fde68a;
+  --project-accent-4: #fda4af;
+  --project-accent-5: #6ee7b7;
+}
+
+/* ==================== LIQUID GLASS ==================== */
+/*
+   Signature look: Apple Vision Pro / iOS 26 style.
+   Surfaces feel like polished water — deep blur, strong inset highlights,
+   chromatic tint, subtle refraction shimmer on the top edge.
+   Background must be a rich gradient so refraction is visible.
+*/
+[data-theme="liquidglass"][data-mode="light"] {
+  --bg-primary: #dbeafe; /* base: sky blue that shows through glass */
+  --bg-secondary: rgba(255, 255, 255, 0.5);
+  --bg-card: rgba(255, 255, 255, 0.38);
+  --bg-nav: rgba(255, 255, 255, 0.5);
+  --text-primary: #0c1a3a;
+  --text-secondary: #1e3a6e;
+  --text-muted: #5080b0;
+  --accent-primary: #0284c7;
+  --accent-secondary: #6d28d9;
+  --accent-tertiary: #0d9488;
+  --accent-quaternary: #d97706;
+  --border-color: rgba(255, 255, 255, 0.75);
+  --border-width: 1px;
+  --shadow-color: rgba(2, 132, 199, 0.1);
+  --radius: 28px;
+  --card-shadow:
+    0 2px 8px rgba(12, 26, 58, 0.06), 0 8px 32px rgba(12, 26, 58, 0.08),
+    0 24px 64px rgba(2, 132, 199, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+  --card-shadow-hover:
+    0 4px 16px rgba(12, 26, 58, 0.1), 0 16px 48px rgba(12, 26, 58, 0.12),
+    0 32px 80px rgba(2, 132, 199, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+  --card-border: 1px solid rgba(255, 255, 255, 0.8);
+  --glow-color: rgba(2, 132, 199, 0.25);
+  --card-hover-transform: translateY(-6px) scale(1.01);
+  /* Top highlight simulates light refracting through liquid edge */
+  --card-bg-gradient: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(219, 234, 254, 0.3) 100%
+  );
+  --backdrop-blur: 32px;
+
+  --project-accent-0: #0369a1;
+  --project-accent-1: #6d28d9;
+  --project-accent-2: #0d9488;
+  --project-accent-3: #b45309;
+  --project-accent-4: #be185d;
+  --project-accent-5: #1d4ed8;
+}
+
+[data-theme="liquidglass"][data-mode="dark"] {
+  /* Very deep bg — liquid glass needs darkness to glow against */
+  --bg-primary: #010b1a;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-nav: rgba(1, 11, 26, 0.8);
+  --text-primary: #e8f4ff;
+  --text-secondary: #7bafd4;
+  --text-muted: #3d6080;
+  --accent-primary: #38bdf8;
+  --accent-secondary: #818cf8;
+  --accent-tertiary: #2dd4bf;
+  --accent-quaternary: #fb923c;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-width: 1px;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --radius: 28px;
+  --card-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 0.5px rgba(255, 255, 255, 0.06) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  --card-shadow-hover:
+    0 4px 16px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(56, 189, 248, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  --card-border: 1px solid rgba(255, 255, 255, 0.09);
+  --glow-color: rgba(56, 189, 248, 0.4);
+  --card-hover-transform: translateY(-6px) scale(1.01);
+  --card-bg-gradient: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(56, 189, 248, 0.04) 100%
+  );
+  --backdrop-blur: 40px;
+
+  --project-accent-0: #7dd3fc;
+  --project-accent-1: #a5b4fc;
+  --project-accent-2: #5eead4;
+  --project-accent-3: #fde68a;
+  --project-accent-4: #fda4af;
+  --project-accent-5: #93c5fd;
+}
+
+/* ==================== MINIMALISM ==================== */
+[data-theme="minimalism"][data-mode="light"] {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f4f4f4;
+  --bg-card: #ffffff;
+  --bg-nav: rgba(250, 250, 250, 0.94);
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #999999;
+  --accent-primary: #111111;
+  --accent-secondary: #555555;
+  --accent-tertiary: #888888;
+  --accent-quaternary: #cccccc;
+  --border-color: #e2e2e2;
+  --border-width: 1px;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-offset: 0px;
+  --radius: 8px;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover:
+    0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --card-border: 1px solid #e2e2e2;
+  --glow-color: rgba(0, 0, 0, 0.06);
+  --card-hover-transform: translateY(-2px);
+  --card-bg-gradient: none;
+  --backdrop-blur: 0px;
+
+  /* Greyscale with one warm and one cool accent per slot */
+  --project-accent-0: #222222;
+  --project-accent-1: #444444;
+  --project-accent-2: #333333;
+  --project-accent-3: #555555;
+  --project-accent-4: #222222;
+  --project-accent-5: #444444;
+  /* Accent is near-black — white text on it is perfect */
+  --btn-hover-text: #ffffff;
+}
+
+[data-theme="minimalism"][data-mode="dark"] {
+  --bg-primary: #111111;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #1e1e1e;
+  --bg-nav: rgba(17, 17, 17, 0.94);
+  --text-primary: #f5f5f5;
+  --text-secondary: #aaaaaa;
+  --text-muted: #666666;
+  --accent-primary: #f0f0f0;
+  --accent-secondary: #aaaaaa;
+  --accent-tertiary: #777777;
+  --accent-quaternary: #444444;
+  --border-color: #2e2e2e;
+  --border-width: 1px;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --radius: 8px;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover:
+    0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
+  --card-border: 1px solid #2e2e2e;
+  --glow-color: rgba(255, 255, 255, 0.05);
+  --card-hover-transform: translateY(-2px);
+  --card-bg-gradient: none;
+  --backdrop-blur: 0px;
+
+  --project-accent-0: #d4d4d4;
+  --project-accent-1: #a3a3a3;
+  --project-accent-2: #c4c4c4;
+  --project-accent-3: #b4b4b4;
+  --project-accent-4: #d4d4d4;
+  --project-accent-5: #a3a3a3;
+  /* Accent is near-white (#f0f0f0) — dark text needed for contrast */
+  --btn-hover-text: #111111;
+}
+
+/* ===================================================================
+   GLOBAL RESETS
+   =================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+code,
+pre {
+  font-family: var(--font-mono);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===================================================================
+   GLASS THEME — BODY BACKGROUNDS
+   The frosted-glass and liquid-glass effects are only visible when
+   there is vivid color *behind* the blurred surface. These rules
+   paint a multi-blob gradient mesh directly on <body> for each theme.
+   =================================================================== */
+
+/* Glassmorphism light — indigo/violet/cyan blobs */
+[data-theme="glassmorphism"][data-mode="light"] body,
+[data-theme="glassmorphism"][data-mode="light"] #root {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 15% 20%,
+      rgba(99, 102, 241, 0.28) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 85% 10%,
+      rgba(167, 139, 250, 0.22) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 60% at 60% 80%,
+      rgba(8, 145, 178, 0.2) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 30% 70%,
+      rgba(219, 39, 119, 0.14) 0%,
+      transparent 50%
+    ),
+    #f0f2ff;
+  background-attachment: fixed;
+}
+
+/* Glassmorphism dark — violet/indigo/cyan on deep navy */
+[data-theme="glassmorphism"][data-mode="dark"] body,
+[data-theme="glassmorphism"][data-mode="dark"] #root {
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 10% 15%,
+      rgba(99, 102, 241, 0.35) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 90% 10%,
+      rgba(167, 139, 250, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 65% 55% at 55% 85%,
+      rgba(34, 211, 238, 0.22) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 45% 35% at 80% 60%,
+      rgba(244, 114, 182, 0.18) 0%,
+      transparent 45%
+    ),
+    #07071a;
+  background-attachment: fixed;
+}
+
+/* Liquid Glass light — sky/teal/violet blobs on sky blue */
+[data-theme="liquidglass"][data-mode="light"] body,
+[data-theme="liquidglass"][data-mode="light"] #root {
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 20% 10%,
+      rgba(186, 230, 255, 0.9) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 60% at 80% 20%,
+      rgba(196, 181, 253, 0.5) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 50% 90%,
+      rgba(94, 234, 212, 0.4) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 10% 70%,
+      rgba(147, 197, 253, 0.5) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 40% 35% at 90% 75%,
+      rgba(167, 139, 250, 0.3) 0%,
+      transparent 45%
+    ),
+    #dbeafe;
+  background-attachment: fixed;
+}
+
+/* Liquid Glass dark — deep ocean with teal/blue chromatic glow */
+[data-theme="liquidglass"][data-mode="dark"] body,
+[data-theme="liquidglass"][data-mode="dark"] #root {
+  background:
+    radial-gradient(
+      ellipse 80% 65% at 5% 10%,
+      rgba(7, 89, 133, 0.6) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 90% 15%,
+      rgba(56, 189, 248, 0.18) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 70% 55% at 45% 90%,
+      rgba(14, 116, 144, 0.25) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 85% 70%,
+      rgba(99, 102, 241, 0.15) 0%,
+      transparent 45%
+    ),
+    #010b1a;
+  background-attachment: fixed;
+}
+
+/* ===================================================================
+   GLASS THEME — NEO-CARD OVERRIDES
+   Adds the inset top-edge highlight that makes glass look like glass.
+   =================================================================== */
+[data-theme="glassmorphism"] .neo-card,
+[data-theme="liquidglass"] .neo-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmering top-edge highlight — the single most important glass detail */
+[data-theme="glassmorphism"] .neo-card::before,
+[data-theme="liquidglass"] .neo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.08) 30%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ===================================================================
+   GLASS THEME — NEO-BTN OVERRIDES
+   Buttons get the same frosted treatment as cards.
+   =================================================================== */
+[data-theme="glassmorphism"] .neo-btn-primary,
+[data-theme="liquidglass"] .neo-btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: var(--accent-primary);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="glassmorphism"] .neo-btn-secondary,
+[data-theme="liquidglass"] .neo-btn-secondary {
+  background: var(--bg-card);
+  box-shadow: var(--card-shadow);
+}
+[data-theme="glassmorphism"] .neo-btn-secondary:hover,
+[data-theme="liquidglass"] .neo-btn-secondary:hover {
+  background: var(--bg-card);
+  color: var(--accent-primary);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* ===================================================================
+   THEME TRANSITION
+   =================================================================== */
+body,
+.theme-transition,
+.theme-transition * {
+  transition:
+    background-color var(--transition-speed) ease,
+    color var(--transition-speed) ease,
+    border-color var(--transition-speed) ease,
+    box-shadow var(--transition-speed) ease;
+}
+
+/* ===================================================================
+   SCROLLBAR
+   =================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 3px;
+  opacity: 0.6;
+}
+::-webkit-scrollbar-thumb:hover {
+  opacity: 1;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* ===================================================================
+   UTILITY — neo-card
+   =================================================================== */
+.neo-card {
+  background: var(--card-bg-gradient, var(--bg-card));
+  border: var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+}
+.neo-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: var(--card-hover-transform, translate(-2px, -2px));
+}
+
+/* ===================================================================
+   UTILITY — neo-btn
+   =================================================================== */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+}
+
+.neo-btn-primary {
+  background: var(--accent-primary);
+  color: var(--btn-hover-text, white);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+.neo-btn-primary:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: var(--card-hover-transform, translate(-2px, -2px));
+}
+
+.neo-btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--backdrop-blur));
+}
+.neo-btn-secondary:hover {
+  background: var(--accent-primary);
+  /* Use theme-aware hover text — defaults to white, overridden per theme */
+  color: var(--btn-hover-text, white);
+  box-shadow: var(--card-shadow-hover);
+  transform: var(--card-hover-transform, translate(-2px, -2px));
+}
+
+/* ===================================================================
+   SECTION LAYOUT
+   =================================================================== */
+.section-container {
+  scroll-margin-top: 90px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ===================================================================
+   ANIMATED GRID BACKGROUND
+   =================================================================== */
+.animated-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.05; /* was 0.06 — slightly softer */
+  mask-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    black 70%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    black 70%,
+    transparent 100%
+  );
+}
+
+/* ===================================================================
+   KEYFRAMES
+   =================================================================== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+  50% {
+    box-shadow:
+      0 0 40px var(--glow-color),
+      0 0 60px var(--glow-color);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===================================================================
+   GRADIENT TEXT
+   Toned down: uses primary → secondary instead of all three accents,
+   so it reads cleanly on every theme instead of being a rainbow.
+   =================================================================== */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--text-primary) 0%,
+    var(--accent-primary) 50%,
+    var(--text-secondary) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===================================================================
+   GITHUB CALENDAR
+   =================================================================== */
+.react-github-calendar {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===================================================================
+   COMMAND PALETTE
+   =================================================================== */
+.command-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20vh;
+}
+
+.command-palette {
+  width: 90%;
+  max-width: 560px;
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+}
+
+/* ===================================================================
+   TIMELINE
+   =================================================================== */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px; /* was 3px — more refined */
+  background: var(--accent-primary);
+  opacity: 0.5;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 20px;
+  }
+}
+
+/* ===================================================================
+   CURSOR GLOW
+   =================================================================== */
+.cursor-glow {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.12;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+[data-mode="light"] .cursor-glow {
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+}
+
+/* ===================================================================
+   THEME SELECTOR DROPDOWN
+   =================================================================== */
+.theme-selector-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  min-width: 200px;
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+  overflow: hidden;
+  z-index: 60;
+}
+
+nav {
+  transition: all 0.3s ease;
+}
+button {
+  transition: all 0.2s ease;
+}
+
+/* ===================================================================
+   RESPONSIVE
+   =================================================================== */
+@media (max-width: 768px) {
+  .section-container {
+    padding: 158px 16px;
+  }
+  .cursor-glow {
+    display: none;
+  }
+  .neo-btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container {
+    padding: 90px 14px;
+  }
+  .neo-btn {
+    padding: 10px 16px;
+    font-size: 0.82rem;
+  }
+}
