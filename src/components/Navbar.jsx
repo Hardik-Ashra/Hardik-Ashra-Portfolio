@@ -105,26 +105,9 @@ export default function Navbar() {
         <div className="w-full">
           <div className="max-w-[1280px] mx-auto h-16 px-6 flex items-center justify-between">
             {/* LOGO */}
-            {/* <motion.a
-              href="#hero"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("#hero");
-              }}
-              className="font-bold text-lg tracking-tight cursor-pointer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span style={{ color: "var(--accent-primary)" }}>H</span>
-              <span style={{ color: "var(--text-primary)" }}>ardik</span>
-            </motion.a> */}
-
             <motion.a
               href="#hero"
-              onClick={(e) => {
-                e.preventDefault();
-                onClick?.("#hero");
-              }}
+              onClick={() => handleNavClick(link.href)}
               className="flex items-center gap-2.5 cursor-pointer select-none group"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
